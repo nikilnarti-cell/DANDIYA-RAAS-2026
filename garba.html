@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dandiya RAAS 2026 — Dharwad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root{
+    --night:#2a0f2c; --night-2:#3d1338; --ink:#160814;
+    --marigold:#f5a300; --magenta:#e6396c; --gold:#e8c07d; --cream:#fdf3e4;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{margin:0;height:100%;}
+  body{background:radial-gradient(120% 90% at 50% -10%, var(--night-2), var(--night) 55%, var(--ink) 100%);color:var(--cream);font-family:'Manrope',sans-serif;overflow-x:hidden;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}}
+  .wrap{max-width:640px;margin:0 auto;padding:0 24px 100px;position:relative;}
+  .hero{padding:56px 0 28px;text-align:center;position:relative;}
+  .sticks{width:120px;height:120px;margin:0 auto 18px;position:relative;}
+  .sticks svg{position:absolute;top:0;left:0;width:100%;height:100%;transform-origin:60px 60px;}
+  .stick-a{animation:cross-a .9s cubic-bezier(.2,.8,.2,1) forwards;}
+  .stick-b{animation:cross-b .9s cubic-bezier(.2,.8,.2,1) forwards;}
+  @keyframes cross-a{from{transform:rotate(-70deg) scale(.4);opacity:0}to{transform:rotate(-22deg) scale(1);opacity:1}}
+  @keyframes cross-b{from{transform:rotate(70deg) scale(.4);opacity:0}to{transform:rotate(22deg) scale(1);opacity:1}}
+  .glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:340px;height:340px;background:radial-gradient(circle, rgba(245,163,0,.35), rgba(230,57,108,.18) 45%, transparent 70%);filter:blur(6px); z-index:-1; animation:pulse 3.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.7;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.08);}}
+  .eyebrow{font-size:.95rem;color:var(--gold);margin:0 0 6px;font-weight:700;}
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,11vw,4.2rem);line-height:.95;margin:0;color:var(--cream);}
+  h1 span{display:block;font-style:italic;font-weight:300;color:var(--marigold);font-size:.5em;margin-top:6px;}
+  .tagline{margin:18px auto 0;max-width:340px;font-size:1.05rem;color:#f0d9e2;}
+  .meta{margin-top:26px;font-size:1.05rem;} .meta b{color:var(--marigold);}
+  .cta-row{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:800;text-decoration:none;font-size:1rem;border:none;cursor:pointer;transition:transform .15s ease;font-family:inherit;}
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:linear-gradient(120deg,var(--marigold),var(--magenta));color:var(--ink);}
+  .btn-secondary{background:transparent;border:1.5px solid rgba(253,243,228,.4);color:var(--cream);}
+  .btn-block{width:100%;}
+  .btn[disabled]{opacity:.4;cursor:not-allowed;}
+  .countdown{display:flex;justify-content:center;gap:14px;margin-top:40px;}
+  .cd-box{background:rgba(253,243,228,.06);border:1px solid rgba(253,243,228,.14);border-radius:14px;padding:12px 6px;width:68px;text-align:center;}
+  .cd-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--marigold);}
+  .cd-label{font-size:.68rem;color:#e3c8d2;margin-top:2px;}
+  .divider{display:flex;align-items:center;gap:10px;margin:52px 0 22px;color:var(--gold);}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(232,192,125,.4),transparent);}
+  .divider span{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;white-space:nowrap;}
+  .about p{color:#f0d9e2;line-height:1.65;font-size:1.02rem;}
+  .prices{display:grid;gap:14px;}
+  .price-card{background:rgba(253,243,228,.05);border:1px solid rgba(253,243,228,.12);border-radius:18px;padding:18px 20px;}
+  .price-card.featured{border-color:var(--marigold);background:linear-gradient(120deg,rgba(245,163,0,.12),rgba(230,57,108,.08));}
+  .price-top{display:flex;justify-content:space-between;align-items:center;}
+  .price-name{font-family:'Fraunces',serif;font-size:1.2rem;}
+  .price-sub{font-size:.85rem;color:#dcb8c4;margin-top:2px;}
+  .price-amt{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--marigold);white-space:nowrap;}
+  .qty-row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px solid rgba(253,243,228,.1);}
+  .qty-ctrl{display:flex;align-items:center;gap:14px;}
+  .qty-btn{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(253,243,228,.35);background:transparent;color:var(--cream);font-size:1.2rem;line-height:1;cursor:pointer;}
+  .qty-val{font-weight:800;min-width:18px;text-align:center;}
+  .qty-line-total{color:var(--gold);font-weight:700;}
+  .venue-card{background:rgba(253,243,228,.05);border:1px solid rgba(253,243,228,.12);border-radius:18px;padding:22px;text-align:center;}
+  .venue-card b{display:block;font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:4px;}
+  .venue-card a{color:var(--marigold);font-weight:700;text-decoration:none;}
+  footer{text-align:center;margin-top:50px;color:#c79aa9;font-size:.85rem;}
+
+  .total-bar{position:fixed;left:0;right:0;bottom:0;background:rgba(20,8,18,.92);backdrop-filter:blur(8px);border-top:1px solid rgba(253,243,228,.15);padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));display:none;justify-content:space-between;align-items:center;gap:14px;z-index:30;}
+  .total-bar.show{display:flex;}
+  .total-bar .amt{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--marigold);}
+
+  .overlay{position:fixed;inset:0;background:rgba(10,4,9,.85);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;z-index:50;}
+  .overlay.show{display:flex;}
+  .sheet{background:var(--night);border:1px solid rgba(253,243,228,.15);border-radius:22px 22px 0 0;max-width:480px;width:100%;padding:26px 24px calc(26px + env(safe-area-inset-bottom,0px));max-height:88vh;overflow-y:auto;}
+  .sheet h3{font-family:'Fraunces',serif;font-weight:600;margin:0 0 4px;font-size:1.5rem;}
+  .sheet .sub{color:#dcb8c4;font-size:.9rem;margin-bottom:18px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:.85rem;color:var(--gold);margin-bottom:6px;font-weight:700;}
+  .field input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(253,243,228,.2);background:rgba(253,243,228,.06);color:var(--cream);font-size:1rem;font-family:inherit;}
+  .field input:focus{outline:2px solid var(--marigold);}
+  .qr-box{background:#fff;border-radius:16px;padding:16px;display:flex;justify-content:center;margin:18px 0;}
+  .close-x{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--cream);font-size:1.4rem;cursor:pointer;}
+  .sheet-inner{position:relative;}
+  .note{font-size:.85rem;color:#dcb8c4;line-height:1.5;margin-top:10px;}
+  .ticket{border:2px dashed var(--marigold);border-radius:16px;padding:18px;text-align:center;}
+  .ticket .tid{font-family:'Fraunces',serif;color:var(--gold);font-size:.9rem;margin-top:8px;}
+  .ticket .tname{font-size:1.1rem;font-weight:800;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="sticks">
+      <svg class="stick-a" viewBox="0 0 120 120"><rect x="56" y="10" width="8" height="100" rx="4" fill="#e8c07d"/><circle cx="60" cy="14" r="6" fill="#f5a300"/><circle cx="60" cy="106" r="6" fill="#e6396c"/></svg>
+      <svg class="stick-b" viewBox="0 0 120 120"><rect x="56" y="10" width="8" height="100" rx="4" fill="#e8c07d"/><circle cx="60" cy="14" r="6" fill="#e6396c"/><circle cx="60" cy="106" r="6" fill="#f5a300"/></svg>
+    </div>
+    <p class="eyebrow">Dharwad's biggest garba night</p>
+    <h1>Dandiya RAAS<span>2026</span></h1>
+    <p class="tagline">Dhol beats, chaniya cholis, a thousand twirling sticks — one unforgettable night.</p>
+    <p class="meta">📍 <b>Yeligar Sport Arena, Dharwad</b><br>🗓️ <b>14th October</b> · from <b>6:00 PM</b></p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#pricing">Book your spot</a>
+      <a class="btn btn-secondary" href="https://wa.me/919740453404?text=Hi!%20I'd%20like%20to%20book%20for%20Dandiya%20RAAS%202026" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <div class="countdown">
+      <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-label">days</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-label">hrs</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-label">min</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-s">--</div><div class="cd-label">sec</div></div>
+    </div>
+  </section>
+
+  <div class="divider"><span>the night</span></div>
+  <section class="about"><p>Nine nights of Navratri build up to this one — Dharwad's biggest floor, live dhol, a DJ who knows exactly when to drop the beat, and prizes for the best-dressed couple and best dandiya moves. Come in your festive best, bring your sticks (or grab a pair at the gate), and dance till the arena closes.</p></section>
+
+  <div class="divider" id="pricing"><span>passes</span></div>
+  <section class="prices" id="prices">
+    <div class="price-card" data-name="Stag" data-price="249">
+      <div class="price-top"><div><div class="price-name">Stag</div><div class="price-sub">single entry</div></div><div class="price-amt">₹249</div></div>
+      <div class="qty-row"><div class="qty-ctrl"><button class="qty-btn" data-act="minus">−</button><span class="qty-val">0</span><button class="qty-btn" data-act="plus">+</button></div><div class="qty-line-total">₹0</div></div>
+    </div>
+    <div class="price-card featured" data-name="Couple" data-price="459">
+      <div class="price-top"><div><div class="price-name">Couple</div><div class="price-sub">most popular</div></div><div class="price-amt">₹459</div></div>
+      <div class="qty-row"><div class="qty-ctrl"><button class="qty-btn" data-act="minus">−</button><span class="qty-val">0</span><button class="qty-btn" data-act="plus">+</button></div><div class="qty-line-total">₹0</div></div>
+    </div>
+    <div class="price-card" data-name="Group of 5" data-price="999">
+      <div class="price-top"><div><div class="price-name">Group of 5</div><div class="price-sub">squad pass</div></div><div class="price-amt">₹999</div></div>
+      <div class="qty-row"><div class="qty-ctrl"><button class="qty-btn" data-act="minus">−</button><span class="qty-val">0</span><button class="qty-btn" data-act="plus">+</button></div><div class="qty-line-total">₹0</div></div>
+    </div>
+  </section>
+
+  <div class="divider"><span>find us</span></div>
+  <section class="venue-card"><b>Yeligar Sport Arena</b>Dharwad<div style="margin-top:12px;"><a href="https://www.google.com/maps/search/?api=1&query=Yeligar+Sport+Arena+Dharwad" target="_blank" rel="noopener">Get directions →</a></div></section>
+
+  <div class="cta-row" style="margin-top:40px;">
+    <a class="btn btn-secondary" href="https://wa.me/919740453404?text=Hi!%20I'd%20like%20to%20book%20for%20Dandiya%20RAAS%202026" target="_blank" rel="noopener">WhatsApp us</a>
+    <a class="btn btn-secondary" href="tel:+919740453404">Call 97404 53404</a>
+  </div>
+  <footer>Dandiya RAAS 2026 · Yeligar Sport Arena, Dharwad</footer>
+</div>
+
+<div class="total-bar" id="totalBar">
+  <div>Total <span class="amt" id="totalAmt">₹0</span></div>
+  <button class="btn btn-primary" id="proceedBtn">Book Now</button>
+</div>
+
+<div class="overlay" id="payOverlay"><div class="sheet"><div class="sheet-inner">
+  <button class="close-x" id="closePay">✕</button>
+  <h3>Complete your booking</h3>
+  <div class="sub" id="orderSummary"></div>
+  <div class="field"><label>Your name</label><input id="buyerName" placeholder="e.g. Rohit"></div>
+  <div class="field"><label>Phone number</label><input id="buyerPhone" type="tel" placeholder="10-digit mobile"></div>
+  <div class="qr-box"><div id="qrcode"></div></div>
+  <p class="note">Scan with any UPI app (GPay, PhonePe, Paytm) and pay <b id="qrAmt">₹0</b>, or tap the button below on this phone.</p>
+  <a class="btn btn-secondary btn-block" id="upiLinkBtn" style="margin-top:10px;text-align:center;">Pay with UPI app</a>
+  <div class="field" style="margin-top:16px;">
+    <label>UPI transaction / reference ID</label>
+    <input id="upiRef" placeholder="12-digit UTR from your payment app">
+    <p class="note" style="margin-top:6px;">After paying, your UPI app shows this as "UPI Ref No.", "Transaction ID" or "UTR" — usually 12 digits. Paste it here.</p>
+  </div>
+  <button class="btn btn-primary btn-block" id="paidBtn" style="margin-top:14px;">Get my ticket</button>
+  <p class="note" id="paidError" style="display:none;color:var(--magenta);">Please enter the transaction/reference ID shown in your UPI app after payment.</p>
+  <p class="note">This ID is checked against your bank/UPI history at the gate, so enter it correctly.</p>
+</div></div></div>
+
+<div class="overlay" id="ticketOverlay"><div class="sheet"><div class="sheet-inner">
+  <button class="close-x" id="closeTicket">✕</button>
+  <h3>Your entry ticket</h3>
+  <div class="sub">Screenshot this and show it at the gate</div>
+  <div class="ticket">
+    <div class="qr-box" style="margin:0 0 6px;"><div id="ticketQr"></div></div>
+    <div class="tname" id="tName"></div>
+    <div class="note" id="tDetails"></div>
+    <div class="tid" id="tId"></div>
+  </div>
+</div></div></div>
+
+<script>
+  const target = new Date("2026-10-14T18:00:00+05:30").getTime();
+  function tick(){
+    const diff = Math.max(0, target - Date.now());
+    document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
+    document.getElementById('cd-h').textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+
+  const UPI_ID = "9740453404-3@ybl";
+  const PAYEE = "Dandiya RAAS 2026";
+  const cards = document.querySelectorAll('.price-card');
+  const totalBar = document.getElementById('totalBar');
+  const totalAmtEl = document.getElementById('totalAmt');
+
+  function recalc(){
+    let total=0, lines=[];
+    cards.forEach(c=>{
+      const qty=parseInt(c.querySelector('.qty-val').textContent);
+      const price=parseInt(c.dataset.price);
+      const lineTotal=qty*price;
+      c.querySelector('.qty-line-total').textContent = '₹'+lineTotal;
+      total+=lineTotal;
+      if(qty>0) lines.push(qty+'x '+c.dataset.name);
+    });
+    totalAmtEl.textContent='₹'+total;
+    totalBar.classList.toggle('show', total>0);
+    return {total, lines};
+  }
+
+  cards.forEach(c=>{
+    const valEl=c.querySelector('.qty-val');
+    const max = c.dataset.name==='Group of 5' ? 3 : 5;
+    c.querySelector('[data-act="plus"]').onclick=()=>{
+      let v=parseInt(valEl.textContent); if(v<max){valEl.textContent=++v;} recalc();
+    };
+    c.querySelector('[data-act="minus"]').onclick=()=>{
+      let v=parseInt(valEl.textContent); if(v>0){valEl.textContent=--v;} recalc();
+    };
+  });
+  recalc();
+
+  const payOverlay=document.getElementById('payOverlay');
+  document.getElementById('proceedBtn').onclick=()=>{
+    const {total, lines} = recalc();
+    document.getElementById('orderSummary').textContent = lines.join(' · ') + ' — ₹'+total;
+    document.getElementById('qrAmt').textContent='₹'+total;
+    payOverlay.classList.add('show');
+    buildQr(total);
+  };
+  document.getElementById('closePay').onclick=()=>payOverlay.classList.remove('show');
+
+  function buildQr(amount){
+    document.getElementById('qrcode').innerHTML='';
+    const upiUrl = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(PAYEE)}&am=${amount}&cu=INR&tn=${encodeURIComponent('Dandiya RAAS 2026')}`;
+    new QRCode(document.getElementById('qrcode'), {text: upiUrl, width:180, height:180});
+    document.getElementById('upiLinkBtn').href = upiUrl;
+  }
+
+  document.getElementById('paidBtn').onclick=()=>{
+    const name = document.getElementById('buyerName').value.trim() || 'Guest';
+    const phone = document.getElementById('buyerPhone').value.trim();
+    const upiRef = document.getElementById('upiRef').value.trim();
+    const errEl = document.getElementById('paidError');
+    const {total, lines} = recalc();
+    if(total===0){ alert('Please select at least one pass.'); return; }
+    if(upiRef.length < 6){ errEl.style.display='block'; return; }
+    errEl.style.display='none';
+    const ticketId = 'DR26-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).slice(2,5).toUpperCase();
+    const payload = JSON.stringify({id:ticketId, name, phone, order:lines.join(', '), amount:total, ref:upiRef, event:'Dandiya RAAS 2026'});
+    document.getElementById('ticketQr').innerHTML='';
+    new QRCode(document.getElementById('ticketQr'), {text: payload, width:200, height:200});
+    document.getElementById('tName').textContent = name;
+    document.getElementById('tDetails').textContent = lines.join(', ') + ' · ₹' + total + (phone ? ' · '+phone : '') + ' · Ref: ' + upiRef;
+    document.getElementById('tId').textContent = ticketId;
+    payOverlay.classList.remove('show');
+    document.getElementById('ticketOverlay').classList.add('show');
+  };
+  document.getElementById('closeTicket').onclick=()=>document.getElementById('ticketOverlay').classList.remove('show');
+</script>
+</body>
+</html>
